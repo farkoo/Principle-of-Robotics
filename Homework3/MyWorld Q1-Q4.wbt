@@ -1,0 +1,131 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.0983269586420227 0.7879867429850694 0.6077900147945768 0.4050118642835362
+  position -1.3559482673238226 -0.5066154123481408 0.4945904606496345
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+Robot {
+  translation 0 0 0.05
+  children [
+    Transform {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 0.2 0.1
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 8.929911765129149e-08
+        axis 0 0 1
+        anchor 0 0 0.1
+      }
+      device [
+        RotationalMotor {
+          name "rotational_motor1"
+        }
+      ]
+      endPoint Solid {
+        translation 0 0 0.1
+        rotation 0 0 1 8.940696716308595e-08
+        children [
+          SliderJoint {
+            jointParameters JointParameters {
+              position 4.75057524918217e-12
+              axis 0 1 0
+              minStop -0.1
+              maxStop 0.11
+            }
+            device [
+              LinearMotor {
+                name "linear_motor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 4.75057524918217e-12 0.075
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 8.929896380991478e-08
+                    axis 0 1 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "rotational_motor2"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.18 0
+                    rotation 0 1 0 8.940696716308595e-08
+                    children [
+                      DEF axle3 Shape {
+                        appearance PBRAppearance {
+                          baseColor 1 1 0
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry Box {
+                          size 0.025 0.05 0.025
+                        }
+                      }
+                    ]
+                    boundingObject USE axle3
+                    physics Physics {
+                    }
+                    linearVelocity 1.6089073415589509e-07 -1.4449517470360105e-10 -2.2412026180517914e-07
+                    angularVelocity 2.047782677758828e-09 8.939024062501848e-07 8.938958545210492e-07
+                  }
+                }
+                DEF axle2 Shape {
+                  appearance PBRAppearance {
+                    baseColor 1 0 1
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.05 0.3 0.05
+                  }
+                }
+              ]
+              boundingObject USE axle2
+              physics Physics {
+              }
+              linearVelocity -6.988406599230109e-12 -1.4449675454644641e-10 -2.1995947054163676e-07
+              angularVelocity 1.3651939878823226e-09 -4.835633575535922e-13 8.938963385682101e-07
+            }
+          }
+          DEF axle1 Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.05 0.05 0.1
+            }
+          }
+        ]
+        boundingObject USE axle1
+        physics Physics {
+        }
+        linearVelocity -3.484442516272664e-12 3.972302749174477e-14 -1.251535545634335e-07
+        angularVelocity 6.825993637018458e-10 -3.508684005914918e-13 8.939005574103173e-07
+      }
+    }
+  ]
+  controller "my_controller"
+}
